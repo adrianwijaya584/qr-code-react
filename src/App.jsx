@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import { useState } from 'react';
 import {QrReader} from "react-qr-reader"
+import * as device from 'react-device-detect'
 
 function App() {
   const [openCamera, setOpenCamera]= useState(false)
   const [data, setData]= useState("test")
+
 
   function scan(data, error) {
     if(data) {
@@ -30,7 +32,7 @@ function App() {
           onResult={scan}
           constraints={{
             facingMode: {
-              exact: "environment"
+              exact: device.isDesktop?"user":"environment"
             },
           }}
         />
