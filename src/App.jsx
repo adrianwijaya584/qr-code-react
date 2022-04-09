@@ -8,7 +8,10 @@ function App() {
 
   function scan(data, error) {
     if(data) {
+      setOpenCamera(false)
       setData(data?.text)
+
+      window.open(data?.text)
     }
 
     if(error) {
