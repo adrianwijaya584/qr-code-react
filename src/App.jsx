@@ -25,7 +25,7 @@ function App() {
           onResult={scan}
           constraints={{
             facingMode: {
-              exact: "environtment"
+              exact: "environment"
             },
           }}
         />
