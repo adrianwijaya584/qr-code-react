@@ -1,11 +1,11 @@
 import logo from './logo.svg';
-import QrReader from 'react-qr-scanner'
 import { useState } from 'react';
+import {QrReader} from "react-qr-reader"
 
 function App() {
   const [openCamera, setOpenCamera]= useState(false)
 
-  function scan(data) {
+  function scan(data, error) {
     console.log(data);
   }
 
@@ -15,11 +15,11 @@ function App() {
 
       {
         openCamera&&<QrReader
-          onScan={scan}
-          facingMode="rear"
-          style={{
-            height: 240,
-            width: 320,
+          onResult={scan}
+          constraints={{
+            facingMode: {
+              exact: "environment"
+            },
           }}
         />
       }
