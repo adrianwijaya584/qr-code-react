@@ -4,9 +4,16 @@ import {QrReader} from "react-qr-reader"
 
 function App() {
   const [openCamera, setOpenCamera]= useState(false)
+  const [data, setData]= useState("test")
 
   function scan(data, error) {
-    console.log(data);
+    if(data) {
+      setData(data?.text)
+    }
+
+    if(error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -18,11 +25,13 @@ function App() {
           onResult={scan}
           constraints={{
             facingMode: {
-              exact: "environment"
+              exact: "user"
             },
           }}
         />
       }
+
+      <p>{data}</p>
     </div>
   );
 }
